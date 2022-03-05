@@ -22,7 +22,8 @@ Bureaucrat::Bureaucrat( std::string const name, short grade ) : _name(name), _gr
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		this->_grade = MIN_GRADE;
+		std::cerr << e.what() << '\n';
 	}
 	
 	return ;
@@ -36,7 +37,7 @@ Bureaucrat::Bureaucrat( const Bureaucrat & src ) : _name(src.getName()), _grade(
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << e.what() << '\n';
 	}
 	return ;
 }
@@ -87,11 +88,11 @@ short					Bureaucrat::getGrade( void ) const
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
-void					Bureaucrat::checkGrade( void )
+void					Bureaucrat::checkGrade( void ) const
 {
-	if (this->getGrade() > 150)
+	if (this->getGrade() > MIN_GRADE)
 		throw Bureaucrat::GradeTooLowException();
-	if (this->getGrade() < 1)
+	if (this->getGrade() < MAX_GRADE)
 		throw Bureaucrat::GradeTooHighException();
 	return ;
 }
@@ -108,7 +109,7 @@ void					Bureaucrat::promotion( void )
 	catch(const std::exception& e)
 	{
 		this->_grade++;
-		std::cerr << this->getName() << " can't be promoted : " <<  e.what() << std::endl;
+		std::cerr << this->getName() << " can't be promoted : " <<  e.what() << '\n';
 	}
 }
 
@@ -125,8 +126,27 @@ void					Bureaucrat::retrograde( void )
 	catch(const std::exception& e)
 	{
 		this->_grade--;
-		std::cerr << this->getName() << " can't be retrograded : " <<  e.what() << std::endl;
+		std::cerr << this->getName() << " can't be retrograded : " <<  e.what() << '\n';
 	}
+}
+
+void					Bureaucrat::signForm( Form & f )
+{
+	try
+	{
+		f.beSigned(*this);
+		std::cout << this->getName() << " signed \"" << f.getName() << "\"" << std::endl;
+	}
+	catch(const Form::GradeTooLowException& e)
+	{
+		std::cerr << this->getName() << " couldn't sign \"" << f.getName()
+					<< "\" because " << e.what() << std::endl;
+	}
+	catch(const Form::AlreadySignException& e)
+	{
+		std::cerr << this->getName() << " try to sign but " << e.what() << std::endl;
+	}
+	
 }
 
 /* ************************************************************************** */
