@@ -4,7 +4,7 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Bureaucrat::Bureaucrat( void ) : _name("Prrrrt", 150)
+Bureaucrat::Bureaucrat( void ) : _name("Prrrrt"), _grade(150)
 {
 	return ;
 }
@@ -14,24 +14,15 @@ Bureaucrat::Bureaucrat( std::string const name ) : _name(name), _grade(150)
 	return ;
 }
 
-Bureaucrat::Bureaucrat( std::string const name, short grade ) : _name(name)
+Bureaucrat::Bureaucrat( std::string const name, short grade ) : _name(name), _grade(grade)
 {
 	try
 	{
-		if (grade > 150 || grade < 1)
-		{
-			if (grade > 150)
-				throw Bureaucrat::GradeTooLowException();
-			if (grade < 1)
-				throw Bureaucrat::GradeTooHighException();
-		}
-		else
-			this->_grade = grade;
+		this->checkGrade();
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
-		this->~Bureaucrat(); // marche pas...
 	}
 	
 	return ;
@@ -39,7 +30,14 @@ Bureaucrat::Bureaucrat( std::string const name, short grade ) : _name(name)
 
 Bureaucrat::Bureaucrat( const Bureaucrat & src ) : _name(src.getName()), _grade(src.getGrade())
 {
-	// *this = src;
+	try
+	{
+		this->checkGrade();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	return ;
 }
 
@@ -61,11 +59,7 @@ Bureaucrat::~Bureaucrat( void )
 Bureaucrat &				Bureaucrat::operator=( Bureaucrat const & rhs )
 {
 	if ( this != &rhs )
-	{
-		// this->_name = rhs.getName();
 		this->_grade = rhs.getGrade();
-	}
-	std::cout << this << " | " << &rhs << std::endl;
 	return *this;
 }
 
@@ -75,22 +69,6 @@ std::ostream &			operator<<( std::ostream & o, Bureaucrat const & i )
 	return o;
 }
 
-
-/*
-** --------------------------------- METHODS ----------------------------------
-*/
-void					Bureaucrat::promotion( void )
-{
-	this->_grade -= 1;
-	// ajouter try catch
-}
-
-
-void					Bureaucrat::retrograde( void )
-{
-	this->_grade += 1;
-	// ajouter try catch
-}
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
@@ -103,6 +81,52 @@ std::string				Bureaucrat::getName( void ) const
 short					Bureaucrat::getGrade( void ) const
 {
 	return this->_grade;
+}
+
+
+/*
+** --------------------------------- METHODS ----------------------------------
+*/
+void					Bureaucrat::checkGrade( void )
+{
+	if (this->getGrade() > 150)
+		throw Bureaucrat::GradeTooLowException();
+	if (this->getGrade() < 1)
+		throw Bureaucrat::GradeTooHighException();
+	return ;
+}
+
+void					Bureaucrat::promotion( void )
+{
+	try
+	{
+		this->_grade--;
+		this->checkGrade();
+		std::cout << this->getName() << " is promoted from grade " << (this->getGrade() + 1)
+			<< " to grade " << this->getGrade() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		this->_grade++;
+		std::cerr << this->getName() << " can't be promoted : " <<  e.what() << '\n';
+	}
+}
+
+
+void					Bureaucrat::retrograde( void )
+{
+	try
+	{
+		this->_grade++;
+		this->checkGrade();
+		std::cout << this->getName() << " is retrograded from grade " << (this->getGrade() - 1)
+			<< " to grade " << this->getGrade() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		this->_grade--;
+		std::cerr << this->getName() << " can't be retrograded : " <<  e.what() << '\n';
+	}
 }
 
 /* ************************************************************************** */

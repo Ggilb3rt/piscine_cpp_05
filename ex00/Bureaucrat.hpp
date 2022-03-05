@@ -15,6 +15,14 @@ class Bureaucrat
 
 		Bureaucrat &		operator=( Bureaucrat const & rhs );
 
+		std::string			getName( void ) const;
+		short				getGrade( void ) const;
+
+		void				checkGrade( void );
+		void				promotion( void );
+		void				retrograde( void );
+
+
 		class	GradeTooHighException : public std::exception
 		{
 			public:
@@ -32,12 +40,6 @@ class Bureaucrat
 					return ("Grade too low exception");
 				}
 		};
-
-		void				promotion( void );
-		void				retrograde( void );
-
-		std::string			getName( void ) const;
-		short				getGrade( void ) const;
 
 	private:
 		std::string const	_name;
