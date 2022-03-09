@@ -23,11 +23,11 @@ int main () {
 	//? mais si je catch dans beSigned, signForm ne catch plus rien...
 	// std::cout << "lp se fait signer par dd (erreur attendu)" << std::endl;
 	// lp.beSigned(dd);
-	std::cout << std::endl << "dd sign lp (erreur attendu)" << std::endl;
+	std::cout << std::endl << "dd try to sign lp (erreur attendu)" << std::endl;
 	dd.signForm(lp);
 	std::cout << std::endl << lp << std::endl;
 	
-	std::cout << "Hermes sign lp" << std::endl;
+	std::cout << "Hermes try to sign lp" << std::endl;
 	hermes.signForm(lp);
 	std::cout << lp << std::endl;
 	hermes.signForm(lp);

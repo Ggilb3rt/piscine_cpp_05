@@ -130,23 +130,39 @@ void					Bureaucrat::retrograde( void )
 	}
 }
 
-void					Bureaucrat::signForm( Form & f )
+void					Bureaucrat::signForm( AForm & f )
 {
 	try
 	{
 		f.beSigned(*this);
 		std::cout << this->getName() << " signed \"" << f.getName() << "\"" << std::endl;
 	}
-	catch(const Form::GradeTooLowException& e)
+	catch(const AForm::GradeTooLowException& e)
 	{
 		std::cerr << this->getName() << " couldn't sign \"" << f.getName()
 					<< "\" because " << e.what() << std::endl;
 	}
-	catch(const Form::AlreadySignException& e)
+	catch(const AForm::AlreadySignException& e)
 	{
 		std::cerr << this->getName() << " try to sign but " << e.what() << std::endl;
 	}
 	
 }
 
+
+void					Bureaucrat::executeForm( AForm const & f ) const
+{
+	try
+	{
+		f.execute(*this);
+	}
+	catch(const char* e)
+	{
+		std::cerr << this->getName() << " failed to execute "
+				<< f.getName() << " because : " << e << std::endl;
+		return ;
+	}
+	std::cout << this->getName() << " executed " << f.getName() << std::endl;
+	
+}
 /* ************************************************************************** */
