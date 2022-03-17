@@ -10,6 +10,7 @@ class Bureaucrat;
 class AForm
 {
 	public:
+		AForm( void );
 		AForm( std::string, short, short);
 		AForm( AForm const & src );
 		virtual ~AForm( void );
@@ -23,9 +24,9 @@ class AForm
 
 		void			checkSignGrade( void ) const;
 		void			checkExecGrade( void ) const;
-		void			checkExecution(  Bureaucrat const & executor) const;
-		void			beSigned( Bureaucrat & b);
-		virtual void	execute( Bureaucrat const & executor) const = 0;
+		void			checkExecution(  Bureaucrat const & executor ) const;
+		void			beSigned( Bureaucrat & b );
+		virtual void	execute( Bureaucrat const & executor ) const = 0;
 
 		class	GradeTooHighException : public std::exception
 		{
@@ -64,7 +65,6 @@ class AForm
 		};
 
 	private:
-		AForm( void );
 		std::string const	_name;
 		bool				_signed;
 		short const			_signGrade;

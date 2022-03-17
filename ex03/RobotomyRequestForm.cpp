@@ -75,9 +75,9 @@ void				RobotomyRequestForm::execute( Bureaucrat const & executor ) const
 	{
 		throw	e.what();
 	}
-	srand(time(NULL));
+	std::srand(time(NULL));
 	std::cout << "[Drill noises]" << std::endl;
-	if (rand() % 2 == 1)
+	if (std::rand() % 2 == 1)
 		std::cout << "Robotomy on " << this->getTarget() << " worked !" << std::endl;
 	else
 		std::cout << "Robotomy on " << this->getTarget() << " failed !" << std::endl;

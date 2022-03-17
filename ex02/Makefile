@@ -22,7 +22,7 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
-	rm *_shrubbery
+	-rm *_shrubbery
 
 re: fclean all
 

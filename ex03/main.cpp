@@ -7,13 +7,11 @@
 #include "Intern.hpp"
 
 int main () {
-
 	Bureaucrat	boss("Boss", 1);
 	Intern		random;
-	AForm*		oneJob = NULL;
+	AForm*		oneJob;
 
 	oneJob = random.makeForm("poeut", "roger");
-	// boss.signForm(*oneJob); //! make segfault because NULL pointer is pass to reference
 	
 	std::cout << std::endl << std::endl << "------- Presidential Pardon -------" << std::endl;
 	oneJob = random.makeForm("presidential request", "Roger");
@@ -31,8 +29,6 @@ int main () {
 	oneJob = random.makeForm("shrubbery request", "Roger");
 	boss.signForm(*oneJob);
 	boss.executeForm(*oneJob);
-	
-
 
 	return 0;
 }

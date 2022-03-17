@@ -10,6 +10,7 @@ class Bureaucrat;
 class AForm
 {
 	public:
+		AForm( void );
 		AForm( std::string, short, short);
 		AForm( AForm const & src );
 		virtual ~AForm( void );
@@ -64,7 +65,6 @@ class AForm
 		};
 
 	private:
-		AForm( void );
 		std::string const	_name;
 		bool				_signed;
 		short const			_signGrade;

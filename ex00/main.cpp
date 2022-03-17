@@ -22,6 +22,14 @@ int main () {
 
     hermes2 = boss;
     std::cout << hermes2 << std::endl;
+
+    std::cout << "------------------------" << std::endl;
+    Bureaucrat  newbie("Newbie", 150);
+    newbie.retrograde();
+    std::cout << newbie << std::endl;
+    newbie.promotion();
+    std::cout << newbie << std::endl;
+
     delete dd;
     return 0;
 }

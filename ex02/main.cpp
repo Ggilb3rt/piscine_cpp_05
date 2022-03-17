@@ -21,6 +21,7 @@ int main () {
 	hermes.signForm(alexa);
 	hermes.executeForm(alexa);
 	boss.executeForm(alexa);
+	boss.signForm(basic);
 	boss.executeForm(basic);
 	boss.executeForm(alexaCpy);
 
@@ -35,14 +36,15 @@ int main () {
 	boss.executeForm(pouet);
 
 	std::cout << std::endl << std::endl << "------- Shrubbery Creation -------" << std::endl;
-	ShrubberyCreationForm		tree("Tree");
+	Bureaucrat					knightsWhoSayNi("Knights who say Ni !", 10);
+	ShrubberyCreationForm		shrubbery("Shrubbery");
 	ShrubberyCreationForm		forest("Forest");
 
-	hermes.executeForm(tree);
-	dd.signForm(tree);
-	philip.signForm(tree);
-	hermes.signForm(tree);
-	hermes.executeForm(tree);
+	hermes.executeForm(shrubbery);
+	dd.signForm(shrubbery);
+	philip.signForm(shrubbery);
+	hermes.signForm(shrubbery);
+	knightsWhoSayNi.executeForm(shrubbery);
 	boss.signForm(forest);
 	boss.executeForm(forest);
 
