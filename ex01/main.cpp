@@ -19,10 +19,15 @@ int main () {
 	Form		lp("Laissez passer A38", 100, 90);
 
 	std::cout << lp << std::endl;
-	//? Si j'utilise beSigned ici les throw ne sont pas catch ==> erreur
-	//? mais si je catch dans beSigned, signForm ne catch plus rien...
-	// std::cout << "lp se fait signer par dd (erreur attendu)" << std::endl;
-	// lp.beSigned(dd);
+	try
+	{
+		lp.beSigned(dd);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
 	std::cout << std::endl << "dd try to sign lp (erreur attendu)" << std::endl;
 	dd.signForm(lp);
 	std::cout << std::endl << lp << std::endl;

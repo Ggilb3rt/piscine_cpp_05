@@ -13,7 +13,6 @@ class Form;
 class Bureaucrat
 {
 	public:
-		Bureaucrat( void );
 		Bureaucrat( std::string const );
 		Bureaucrat( std::string const, short);
 		Bureaucrat( Bureaucrat const & src );
@@ -49,6 +48,7 @@ class Bureaucrat
 		};
 
 	private:
+		Bureaucrat( void );
 		std::string const	_name;
 		short				_grade;
 };
