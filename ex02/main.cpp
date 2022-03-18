@@ -6,12 +6,11 @@
 #include "ShrubberyCreationForm.hpp"
 
 int main () {
-
 	Bureaucrat	hermes("Hermes", 52);
-	Bureaucrat	dd("dd", 150);
+	Bureaucrat	dd("Dd", 150);
 	Bureaucrat	boss("Boss", 1);
 
-	std::cout << "------- Robotomy Requests -------" << std::endl;
+	std::cout << "------- Robotomy Requests | sign 72, exec 45-------" << std::endl;
 	RobotomyRequestForm	basic;
 	RobotomyRequestForm	alexa("Alexa");
 	RobotomyRequestForm alexaCpy(alexa);
@@ -25,7 +24,7 @@ int main () {
 	boss.executeForm(basic);
 	boss.executeForm(alexaCpy);
 
-	std::cout << std::endl << std::endl << "------- Presidential Pardon -------" << std::endl;
+	std::cout << std::endl << std::endl << "------- Presidential Pardon | sign 25, exec 5-------" << std::endl;
 	Bureaucrat					philip("Philip", 25);
 	PresidentialPardonForm		pouet("Pouet");
 
@@ -35,8 +34,8 @@ int main () {
 	philip.executeForm(pouet);
 	boss.executeForm(pouet);
 
-	std::cout << std::endl << std::endl << "------- Shrubbery Creation -------" << std::endl;
-	Bureaucrat					knightsWhoSayNi("Knights who say Ni !", 10);
+	std::cout << std::endl << std::endl << "------- Shrubbery Creation | sign 145, exec 137-------" << std::endl;
+	Bureaucrat					knightsWhoSayNi("Knights who say Ni !", 135);
 	ShrubberyCreationForm		shrubbery("Shrubbery");
 	ShrubberyCreationForm		forest("Forest");
 

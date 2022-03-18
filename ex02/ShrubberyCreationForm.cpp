@@ -4,20 +4,20 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", SHRUBBERY_SIGN, SHRUBBERY_EXEC), _target("Test")
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationFormTest", SHRUBBERY_SIGN, SHRUBBERY_EXEC), _target("Test")
 {
 	return ;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm & src ) :
-			AForm("ShrubberyCreationForm", SHRUBBERY_SIGN, SHRUBBERY_EXEC), _target(src.getTarget())
+			AForm("ShrubberyCreationFormCopy-" + src.getTarget(), SHRUBBERY_SIGN, SHRUBBERY_EXEC), _target(src.getTarget())
 {
 	*this = src;
 	return ;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm( std::string target ) :
-			AForm("ShrubberyCreationForm", SHRUBBERY_SIGN, SHRUBBERY_EXEC), _target(target)
+			AForm("ShrubberyCreationForm-" + target, SHRUBBERY_SIGN, SHRUBBERY_EXEC), _target(target)
 {
 	return ;
 }

@@ -5,7 +5,7 @@
 int main () {
 
 	Bureaucrat	hermes("Hermes", 52);
-	Bureaucrat	dd("dd", 1234);
+	Bureaucrat	Roger("Roger", 150);
 	Form		basic;
 
 	std::cout << basic << std::endl;
@@ -21,15 +21,15 @@ int main () {
 	std::cout << lp << std::endl;
 	try
 	{
-		lp.beSigned(dd);
+		lp.beSigned(Roger);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
 	
-	std::cout << std::endl << "dd try to sign lp (erreur attendu)" << std::endl;
-	dd.signForm(lp);
+	std::cout << std::endl << "Roger try to sign lp (erreur attendu)" << std::endl;
+	Roger.signForm(lp);
 	std::cout << std::endl << lp << std::endl;
 	
 	std::cout << "Hermes try to sign lp" << std::endl;

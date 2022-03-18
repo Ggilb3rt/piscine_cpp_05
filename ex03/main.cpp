@@ -11,7 +11,7 @@ int main () {
 	Intern		random;
 	AForm*		oneJob;
 
-	oneJob = random.makeForm("poeut", "roger");
+	oneJob = random.makeForm("pouet", "roger");
 	
 	std::cout << std::endl << std::endl << "------- Presidential Pardon -------" << std::endl;
 	oneJob = random.makeForm("presidential request", "Roger");
@@ -29,6 +29,7 @@ int main () {
 	oneJob = random.makeForm("shrubbery request", "Roger");
 	boss.signForm(*oneJob);
 	boss.executeForm(*oneJob);
+	delete oneJob;
 
 	return 0;
 }

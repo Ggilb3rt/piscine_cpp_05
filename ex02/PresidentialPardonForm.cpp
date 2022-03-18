@@ -4,20 +4,20 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", PRESIDENTIAL_SIGN, PRESIDENTIAL_EXEC), _target("Test robot")
+PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonFormTest", PRESIDENTIAL_SIGN, PRESIDENTIAL_EXEC), _target("Test robot")
 {
 	return ;
 }
 
 PresidentialPardonForm::PresidentialPardonForm( const PresidentialPardonForm & src ) :
-			AForm("PresidentialPardonForm", PRESIDENTIAL_SIGN, PRESIDENTIAL_EXEC), _target(src.getTarget())
+			AForm("PresidentialPardonFormCopy-" + src.getTarget(), PRESIDENTIAL_SIGN, PRESIDENTIAL_EXEC), _target(src.getTarget())
 {
 	*this = src;
 	return ;
 }
 
 PresidentialPardonForm::PresidentialPardonForm( std::string target ) :
-			AForm("PresidentialPardonForm", PRESIDENTIAL_SIGN, PRESIDENTIAL_EXEC), _target(target)
+			AForm("PresidentialPardonForm-" + target, PRESIDENTIAL_SIGN, PRESIDENTIAL_EXEC), _target(target)
 {
 	return ;
 }

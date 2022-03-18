@@ -4,20 +4,20 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", ROBOTOMY_SIGNE, ROBOTOMY_EXEC), _target("Test robot")
+RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestFormTest", ROBOTOMY_SIGNE, ROBOTOMY_EXEC), _target("Test robot")
 {
 	return ;
 }
 
 RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm & src ) :
-			AForm("RobotomyRequestForm", ROBOTOMY_SIGNE, ROBOTOMY_EXEC), _target(src.getTarget())
+			AForm("RobotomyRequestFormCopy-" + src.getTarget(), ROBOTOMY_SIGNE, ROBOTOMY_EXEC), _target(src.getTarget())
 {
 	*this = src;
 	return ;
 }
 
 RobotomyRequestForm::RobotomyRequestForm( std::string target ) :
-			AForm("RobotomyRequestForm", ROBOTOMY_SIGNE, ROBOTOMY_EXEC), _target(target)
+			AForm("RobotomyRequestForm-" + target, ROBOTOMY_SIGNE, ROBOTOMY_EXEC), _target(target)
 {
 	return ;
 }
